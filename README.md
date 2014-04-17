@@ -1,0 +1,1 @@
+This repository includes a variety of projects built with JavaScript. Modernizr is used here to detect whether features such as geolocation and local storage are enabled or disabled on the user's browser and act accordingly. 
