@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <title>JavaScript, Ajax and JSON: To Do List</title>
+    <meta charset="utf-8">
+    <script src="Modernizr.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <!-- Load Javascript files based on feature detection -->
+    <script>        
+    Modernizr.load([
+            "Lesson14_ToDoList.js",
+            {
+                test: Modernizr.geolocation,
+                yep : "geoSupported.js",
+                nope: "notGeoSupported.js"
+            },
+            {
+                test: Modernizr.localstorage,
+                yep : "localStorageSupported.js",
+                nope: "noLocalStorageSupported.js",
+                complete: function() {
+                    init();
+                }
+            }            
+        ]);
+    </script>
+    <link rel="stylesheet" href="Lesson14_ToDoList.css">
+</head>
+<body>
+
+<div>
+
+<h1>My To Do List</h1>
+
+<form>
+<fieldset>
+    <legend>Add a new to do item</legend>
+    <div class="tableContainer">
+    <div class="tableRow">
+        <label for="task">Task: </label>
+            <input type="text" id="task" size="35" placeholder="get milk">
+    </div>
+    <div class="tableRow">
+        <label for="who">Who should do it: </label>
+            <input type="text" id="who" placeholder="Scott">
+    </div>
+    <div class="tableRow">
+                <label for="dueDate">Due Date: </label>
+            <input type="text" id="dueDate" placeholder="mm/dd/yyyy">
+    </div>
+    <div class="tableRow">
+        <label for="submit"></label>
+        <input type="button" id="submit" value="Add Task">
+    </div>
+</fieldset>
+
+
+<fieldset>
+    <legend>Search to do items</legend>
+    <div class="tableContainer">
+    <div class="tableRow">
+        <label for="searchTerm">Search: </label>
+        <input type="text" id="searchTerm" size="35" placeholder="">
+    </div>
+    <div class="tableRow">
+        <label for="searchButton"></label>
+        <input type="button" id="searchButton" value="Search">
+        <input type="button" id="clearButton" value="Clear">
+    </div>
+</fieldset>
+
+</form>
+
+
+<div id="searchResults">
+    <h2>Results</h2>
+    <ul id="searchResultsList">
+    </ul>
+</div>
+
+<ul id="todoList"></ul>
+<div id="map"></div>
+</div>
+
+</body>
+</html>
